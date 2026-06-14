@@ -1,0 +1,32 @@
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Build output
+build/
+target/
+out/
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE lain
+.idea/
+.vscode/
+
+# Temporary files
+*.tmp
+*.swp
