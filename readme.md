@@ -38,9 +38,9 @@ Dengan adanya FitTrack, proses administrasi yang sebelumnya dilakukan secara man
 | -- | ------------------- | ---------------------------------------------------------- | -------------- |
 | 1  | Satria Nugraha      | [@SakaZuki113](https://github.com/SakaZuki113)             | Ketua Kelompok |
 | 2  | Ahmad Sauqi Zamzami | [@AhmadSauqiZamzami](https://github.com/AhmadSauqiZamzami) | Anggota        |
-| 3  | Feriansyah          | -                                                          | Anggota        |
+| 3  | Feriansyah          | [@feriansyahputra09](https://github.com/feriansyahputra09) | Anggota        |
 | 4  | Fadil               | [@mfdlha](https://github.com/mfdlha)                       | Anggota        |
-| 5  | Syifa               | -                                                          | Anggota        |
+| 5  | Syifa               | [@Ssyfaa06](https://github.com/Ssyfaa06)                   | Anggota        |
 
 ---
 
