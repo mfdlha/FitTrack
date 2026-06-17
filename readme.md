@@ -55,7 +55,7 @@ Dengan adanya FitTrack, proses administrasi yang sebelumnya dilakukan secara man
 ### 1. Clone Repository
 
 ```bash
-git clone https://github.com/SakaZuki113/FitTrack.git
+git clone https://github.com/mfdlha/FitTrack.git
 ```
 
 ### 2. Buka di NetBeans
