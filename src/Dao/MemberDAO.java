@@ -5,7 +5,7 @@
 package Dao;
 
 import Model.Member;
-import config.DatabaseConnection;
+import koneksi.koneksi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ public class MemberDAO {
     public Member login(String no_hp, String password) {
         String sql = "SELECT * FROM member WHERE no_hp = ? AND password = ?";
         try {
-            Connection conn = DatabaseConnection.getConnection();
+            Connection conn = koneksi.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, no_hp);
             ps.setString(2, password);
@@ -52,7 +52,7 @@ public class MemberDAO {
         List<Member> list = new ArrayList<>();
         String sql = "SELECT * FROM member";
         try {
-            Connection conn = DatabaseConnection.getConnection();
+            Connection conn = koneksi.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
 
@@ -78,7 +78,7 @@ public class MemberDAO {
         String sql = "INSERT INTO member (nama, no_hp, password, alamat, tgl_daftar, status) "
                    + "VALUES (?, ?, ?, ?, NOW(), 'AKTIF')";
         try {
-            Connection conn = DatabaseConnection.getConnection();
+            Connection conn = koneksi.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, m.getNama());
             ps.setString(2, m.getNo_hp());
@@ -95,7 +95,7 @@ public class MemberDAO {
     public int countMember() {
         String sql = "SELECT COUNT(*) FROM member";
         try {
-            Connection conn = DatabaseConnection.getConnection();
+            Connection conn = koneksi.getConnection();
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) return rs.getInt(1);
