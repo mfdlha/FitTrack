@@ -20,6 +20,8 @@ public class tambahPaket extends javax.swing.JFrame {
     public tambahPaket() {
         initComponents();
         tampilData();
+        setSize(800, 600);
+        setLocationRelativeTo(null);
     }
     
     public void tampilData() {
