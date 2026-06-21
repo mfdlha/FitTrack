@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import koneksi.koneksi; // Sesuaikan dengan nama package dan class koneksi Anda
+import koneksi.koneksi; 
 import Model.Paket;
 /**
  *
@@ -19,14 +19,14 @@ public class PaketDAOImpl implements PaketDAO {
     @Override
     public void update(Paket paket) throws Exception {
         Connection conn = koneksi.getConnection();
-        String sql = "UPDATE paket SET nama_paket=?, durasi=?, harga=?, deskripsi=? WHERE id_paket=?";
+        String sql = "UPDATE paket SET nama_paket=?, masa_aktif=?, harga=?, deskripsi=? WHERE id_paket=?";
         PreparedStatement pst = conn.prepareStatement(sql);
         
         pst.setString(1, paket.getNamaPaket());
-        pst.setInt(2, paket.getDurasi());
+        pst.setInt(2, paket.getMasaAktif());
         pst.setDouble(3, paket.getHarga());
         pst.setString(4, paket.getDeskripsi());
-        pst.setInt(5, paket.getIdPaket()); // Menggunakan setInt karena id_paket adalah integer
+        pst.setInt(5, paket.getIdPaket()); 
         
         pst.executeUpdate();
         pst.close();
@@ -35,10 +35,10 @@ public class PaketDAOImpl implements PaketDAO {
     @Override
     public void insert(Paket paket) throws Exception {
         Connection conn = koneksi.getConnection();
-        String sql = "INSERT INTO paket (nama_paket, durasi, harga, deskripsi) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO paket (nama_paket, masa_aktif, harga, deskripsi) VALUES (?, ?, ?, ?)";
         PreparedStatement pst = conn.prepareStatement(sql);
         pst.setString(1, paket.getNamaPaket());
-        pst.setInt(2, paket.getDurasi());
+        pst.setInt(2, paket.getMasaAktif());
         pst.setDouble(3, paket.getHarga());
         pst.setString(4, paket.getDeskripsi());
         pst.executeUpdate();
@@ -67,7 +67,7 @@ public class PaketDAOImpl implements PaketDAO {
             Paket p = new Paket();
             p.setIdPaket(rs.getInt("id_paket"));
             p.setNamaPaket(rs.getString("nama_paket"));
-            p.setDurasi(rs.getInt("durasi"));
+            p.setMasaAktif(rs.getInt("masa_aktif"));
             p.setHarga(rs.getDouble("harga"));
             p.setDeskripsi(rs.getString("deskripsi"));
             list.add(p);
@@ -90,7 +90,7 @@ public class PaketDAOImpl implements PaketDAO {
             Paket p = new Paket();
             p.setIdPaket(rs.getInt("id_paket"));
             p.setNamaPaket(rs.getString("nama_paket"));
-            p.setDurasi(rs.getInt("durasi"));
+            p.setMasaAktif(rs.getInt("masa_aktif"));
             p.setHarga(rs.getDouble("harga"));
             p.setDeskripsi(rs.getString("deskripsi"));
             list.add(p);

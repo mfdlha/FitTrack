@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-import java.sql.Connection;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -28,7 +27,7 @@ public class tambahPaket extends javax.swing.JFrame {
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID Paket");
         model.addColumn("Nama Paket");
-        model.addColumn("Durasi");
+        model.addColumn("Masa Aktif");
         model.addColumn("Harga");
         model.addColumn("Deskripsi");
 
@@ -41,11 +40,16 @@ public class tambahPaket extends javax.swing.JFrame {
 
             for (Model.Paket p : list) {
                 String hargaFormat = formatRupiah.format(p.getHarga());
-
+                String teksMasaAktif;
+                    if (p.getMasaAktif() == 0) {
+                        teksMasaAktif = "Unlimited"; 
+                    } else {
+                        teksMasaAktif = p.getMasaAktif() + " Bulan"; 
+                    }
                 model.addRow(new Object[] {
                     p.getIdPaket(),
                     p.getNamaPaket(),
-                    p.getDurasi() + " Bulan", 
+                    teksMasaAktif,
                     hargaFormat,              
                     p.getDeskripsi()
                 });
@@ -60,10 +64,30 @@ public class tambahPaket extends javax.swing.JFrame {
     
     public void resetTextField() {
         fieldNamaPaket.setText("");
-        fieldSpinDurasi.setValue(0);
+        fieldSpinMasaAktif.setValue(0);
         fieldHarga.setText("");
         fieldDeskripsi.setText("");
         fieldNamaPaket.requestFocus();
+    }
+    
+    public void cekValidasiData() {
+        if (fieldNamaPaket.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Nama Paket tidak boleh kosong!");
+            fieldNamaPaket.requestFocus(); 
+            return;
+        }
+
+        if (fieldHarga.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Harga wajib diisi!");
+            fieldHarga.requestFocus(); 
+            return;
+        }
+
+        if (fieldDeskripsi.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Deskripsi Paket tidak boleh kosong!");
+            fieldDeskripsi.requestFocus(); 
+            return;
+        }
     }
 
     /**
@@ -80,7 +104,7 @@ public class tambahPaket extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        fieldSpinDurasi = new javax.swing.JSpinner();
+        fieldSpinMasaAktif = new javax.swing.JSpinner();
         jLabel6 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -125,7 +149,7 @@ public class tambahPaket extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel3.setText("Durasi");
+        jLabel3.setText("Masa Aktif");
 
         jLabel6.setText("Bulan");
 
@@ -137,7 +161,7 @@ public class tambahPaket extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(fieldSpinDurasi, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(fieldSpinMasaAktif, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addGap(33, 33, 33))
@@ -148,7 +172,7 @@ public class tambahPaket extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(fieldSpinDurasi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldSpinMasaAktif, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -347,13 +371,13 @@ public class tambahPaket extends javax.swing.JFrame {
 
         try {
             String nama = fieldNamaPaket.getText();
-            int durasiObj = (int) fieldSpinDurasi.getValue(); 
+            int masaAktifObj = (int) fieldSpinMasaAktif.getValue(); 
             double hargaObj = Double.parseDouble(fieldHarga.getText()); 
             String deskripsi = fieldDeskripsi.getText();
 
             Model.Paket p = new Model.Paket();
             p.setNamaPaket(nama);
-            p.setDurasi(durasiObj); 
+            p.setMasaAktif(masaAktifObj); 
             p.setHarga(hargaObj);
             p.setDeskripsi(deskripsi);
 
@@ -378,10 +402,12 @@ public class tambahPaket extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Pilih data yang akan diedit terlebih dahulu");
             return;
         }
+        
+        cekValidasiData();
 
         try {
             int id = Integer.parseInt(idPaket); 
-            int durasiObj = (int) fieldSpinDurasi.getValue(); 
+            int masaAktifObj = (int) fieldSpinMasaAktif.getValue(); 
 
             double hargaObj = Double.parseDouble(fieldHarga.getText()); 
             String deskripsi = fieldDeskripsi.getText();
@@ -389,7 +415,7 @@ public class tambahPaket extends javax.swing.JFrame {
             Model.Paket p = new Model.Paket(); 
             p.setIdPaket(id);
             p.setNamaPaket(fieldNamaPaket.getText());
-            p.setDurasi(durasiObj); 
+            p.setMasaAktif(masaAktifObj); 
             p.setHarga(hargaObj);
             p.setDeskripsi(fieldDeskripsi.getText());
 
@@ -457,9 +483,13 @@ public class tambahPaket extends javax.swing.JFrame {
                 fieldDeskripsi.setText(tabelData.getValueAt(baris, 4).toString());
                 idPaket = tabelData.getValueAt(baris, 0).toString();
 
-                String durasiTabel = tabelData.getValueAt(baris, 2).toString();
-                String durasiAngka = durasiTabel.replace(" Bulan", "").trim();
-                fieldSpinDurasi.setValue(Integer.parseInt(durasiAngka));
+            String masaAktifTabel = tabelData.getValueAt(baris, 2).toString();
+                    if (masaAktifTabel.equals("Unlimited")) {
+                        fieldSpinMasaAktif.setValue(0);
+                    } else {
+                        String masaAktifAngka = masaAktifTabel.replace(" Bulan", "").trim();
+                        fieldSpinMasaAktif.setValue(Integer.parseInt(masaAktifAngka));
+                    }
 
                 String hargaTabel = tabelData.getValueAt(baris, 3).toString();
                 String hargaBersih = hargaTabel.replaceAll("[^0-9]", ""); 
@@ -501,7 +531,7 @@ public class tambahPaket extends javax.swing.JFrame {
     private javax.swing.JTextArea fieldDeskripsi;
     private javax.swing.JTextField fieldHarga;
     private javax.swing.JTextField fieldNamaPaket;
-    private javax.swing.JSpinner fieldSpinDurasi;
+    private javax.swing.JSpinner fieldSpinMasaAktif;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

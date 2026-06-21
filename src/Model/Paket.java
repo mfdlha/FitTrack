@@ -9,27 +9,23 @@ package Model;
  * @author fadil
  */
 public class Paket {
-    // Menyesuaikan tipe data dengan skema MySQL Anda
-    private int idPaket;        // int(11) AUTO_INCREMENT
-    private String namaPaket;   // varchar(10)
-    private int durasi;        // date
-    private double harga;       // double
-    private String deskripsi;   // text
+    private int idPaket;        
+    private String namaPaket;  
+    private int masaAktif;        
+    private double harga;       
+    private String deskripsi;  
 
-    // Constructor Kosong
     public Paket() {
     }
 
-    // Constructor dengan Parameter
-    public Paket(int idPaket, String namaPaket, int durasi, double harga, String deskripsi) {
+    public Paket(int idPaket, String namaPaket, int masaAktif, double harga, String deskripsi) {
         this.idPaket = idPaket;
         this.namaPaket = namaPaket;
-        this.durasi = durasi;
+        this.masaAktif = masaAktif;
         this.harga = harga;
         this.deskripsi = deskripsi;
     }
 
-    // Getter dan Setter
     public int getIdPaket() {
         return idPaket;
     }
@@ -46,12 +42,12 @@ public class Paket {
         this.namaPaket = namaPaket;
     }
 
-    public int getDurasi() {
-        return durasi;
+    public int getMasaAktif() {
+        return masaAktif;
     }
 
-    public void setDurasi(int durasi) {
-        this.durasi = durasi;
+    public void setMasaAktif(int masaAktif) {
+        this.masaAktif = masaAktif;
     }
 
     public double getHarga() {
