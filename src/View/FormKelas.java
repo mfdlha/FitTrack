@@ -2,6 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+package View;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import Model.Kelas;
@@ -9,12 +10,13 @@ import Dao.KelasDAO;
 import Dao.KelasDAOImpl;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+import Utils.CetakLaporan;
 /**
  *
  * @author feria
  */
 public class FormKelas extends javax.swing.JFrame {
-    
+    int idKelas = 0;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormKelas.class.getName());
 
     /**
@@ -84,7 +86,7 @@ public class FormKelas extends javax.swing.JFrame {
     
     spinnerJamMulai.setValue(new java.util.Date());
     spinnerJamSelesai.setValue(new java.util.Date());
-    
+    boxHari.setSelectedIndex(-1);
     spinnerKapasitas.setValue(0);
     
     fieldNamaKelas.requestFocus();
@@ -147,7 +149,7 @@ public class FormKelas extends javax.swing.JFrame {
         tombolSimpan.setText("Simpan");
         tombolSimpan.addActionListener(this::tombolSimpanActionPerformed);
 
-        tombolEdit.setBackground(new java.awt.Color(204, 204, 0));
+        tombolEdit.setBackground(new java.awt.Color(153, 153, 0));
         tombolEdit.setForeground(new java.awt.Color(255, 255, 255));
         tombolEdit.setText("Edit");
         tombolEdit.addActionListener(this::tombolEditActionPerformed);
@@ -155,6 +157,7 @@ public class FormKelas extends javax.swing.JFrame {
         tombolHapus.setBackground(new java.awt.Color(255, 51, 51));
         tombolHapus.setForeground(new java.awt.Color(255, 255, 255));
         tombolHapus.setText("Hapus");
+        tombolHapus.addActionListener(this::tombolHapusActionPerformed);
 
         tombolBersihkan.setBackground(new java.awt.Color(102, 102, 102));
         tombolBersihkan.setForeground(new java.awt.Color(255, 255, 255));
@@ -164,6 +167,7 @@ public class FormKelas extends javax.swing.JFrame {
         tombolCetakLaporan.setBackground(new java.awt.Color(0, 204, 102));
         tombolCetakLaporan.setForeground(new java.awt.Color(255, 255, 255));
         tombolCetakLaporan.setText("Cetak Laporan");
+        tombolCetakLaporan.addActionListener(this::tombolCetakLaporanActionPerformed);
 
         javax.swing.GroupLayout tombolLayout = new javax.swing.GroupLayout(tombol);
         tombol.setLayout(tombolLayout);
@@ -494,6 +498,7 @@ public class FormKelas extends javax.swing.JFrame {
         tombolCari.setBackground(new java.awt.Color(51, 51, 255));
         tombolCari.setForeground(new java.awt.Color(255, 255, 255));
         tombolCari.setText("Cari");
+        tombolCari.addActionListener(this::tombolCariActionPerformed);
 
         labelCariDataKelas.setText("Cari Data Kelas:");
 
@@ -668,6 +673,110 @@ public class FormKelas extends javax.swing.JFrame {
         // TODO add your handling code here:
         resetField();
     }//GEN-LAST:event_tombolBersihkanActionPerformed
+
+    private void tombolHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolHapusActionPerformed
+        // TODO add your handling code here:
+            try {
+            int baris = tabel.getSelectedRow();
+
+            if (baris == -1) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Pilih data di tabel yang ingin dihapus terlebih dahulu!", "Peringatan", javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+
+            int konfirmasi = javax.swing.JOptionPane.showConfirmDialog(this, "Apakah Anda yakin ingin menghapus data kelas ini?", "Konfirmasi Hapus", javax.swing.JOptionPane.YES_NO_OPTION, javax.swing.JOptionPane.QUESTION_MESSAGE);
+
+            if (konfirmasi == javax.swing.JOptionPane.YES_OPTION) {
+
+                int idKelas = Integer.parseInt(tabel.getValueAt(baris, 0).toString());
+
+                Dao.KelasDAO dao = new Dao.KelasDAOImpl();
+                boolean sukses = dao.delete(idKelas);
+
+                if (sukses) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Data Kelas berhasil dihapus!", "Sukses", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+
+                    // Refresh tabel dan kosongkan form
+                    tampilData();
+                    resetField();
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Gagal menghapus data kelas.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            }
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error System", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_tombolHapusActionPerformed
+
+    private void tombolCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCariActionPerformed
+        // TODO add your handling code here:
+        String keyword = fieldCariKelas.getText();
+
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel();
+        model.addColumn("ID Kelas");
+        model.addColumn("Nama Kelas");
+        model.addColumn("Instruktur");
+        model.addColumn("Hari");
+        model.addColumn("Jam Mulai");
+        model.addColumn("Jam Selesai");
+        model.addColumn("Kapasitas");
+
+        try {
+            Dao.KelasDAO dao = new Dao.KelasDAOImpl();
+            java.util.List<Model.Kelas> listKelas = dao.getAll(keyword); 
+
+            if (listKelas.isEmpty()) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Data tidak ditemukan!", "Informasi", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+
+            for (Model.Kelas k : listKelas) {
+                String jamMulai = k.getJamMulai();
+                String jamSelesai = k.getJamSelesai();
+
+                if (jamMulai != null && jamMulai.length() >= 5) jamMulai = jamMulai.substring(0, 5);
+                if (jamSelesai != null && jamSelesai.length() >= 5) jamSelesai = jamSelesai.substring(0, 5);
+
+                model.addRow(new Object[]{
+                    k.getIdKelas(),
+                    k.getNamaKelas(),
+                    k.getInstruktur(),
+                    k.getHari(),
+                    jamMulai,
+                    jamSelesai,
+                    k.getKapasitas()
+                });
+            }
+
+            tabel.setModel(model);
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error pencarian: " + e.getMessage(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_tombolCariActionPerformed
+
+    private void tombolCetakLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakLaporanActionPerformed
+        // TODO add your handling code here:
+        try {
+            String html = CetakLaporan.generateHTML(
+                    "LAPORAN DATA PAKET GYM",
+                    tabel
+            );
+
+            CetakLaporan.bukaHTML(
+                    html,
+                    "laporan_paket_gym.html"
+            );
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    e.getMessage()
+            );
+
+        }
+    }//GEN-LAST:event_tombolCetakLaporanActionPerformed
 
     /**
      * @param args the command line arguments
