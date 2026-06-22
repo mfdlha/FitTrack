@@ -168,7 +168,6 @@ public class lihatPaket extends javax.swing.JFrame {
     private void tombolCetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakActionPerformed
         // TODO add your handling code here:
         try {
-        // 1. Inisialisasi struktur dokumen HTML dan CSS untuk Laporan
         String html = "<html>"
                 + "<head>"
                 + "<title>Laporan Data Paket Gym</title>"
@@ -183,17 +182,14 @@ public class lihatPaket extends javax.swing.JFrame {
                 + "<body>";
 
         html += "<h2 align='center'>LAPORAN DATA PAKET GYM</h2>";
-        html += "<hr>"; // Menambahkan garis pembatas horizontal di bawah judul
+        html += "<hr>"; 
         html += "<table>";
-        
-        // 2. Membuat Header Tabel HTML berdasarkan kolom tabelData Anda
         html += "<tr>";
         for (int k = 0; k < tabelData.getColumnCount(); k++) {
             html += "<th>" + tabelData.getColumnName(k) + "</th>";
         }
         html += "</tr>";
-
-        // 3. Mengambil baris demi baris data dari tabelData secara dinamis
+        
         for (int i = 0; i < tabelData.getRowCount(); i++) {
             html += "<tr>";
             for (int j = 0; j < tabelData.getColumnCount(); j++) {
@@ -207,15 +203,12 @@ public class lihatPaket extends javax.swing.JFrame {
         html += "</table>";
         html += "</body></html>";
 
-        // 4. Menulis string HTML ke dalam file lokal
         File file = new File("laporan_paket_gym.html");
         FileWriter fw = new FileWriter(file);
         fw.write(html);
         fw.close();
 
-        // 5. Eksekusi perintah untuk membuka browser di sistem operasi Linux Anda
         try {
-            // Menggunakan bash -c agar perintah dijalankan di dalam shell Environment Anda
             String[] cmd = {
                 "bash", 
                 "-c", 
