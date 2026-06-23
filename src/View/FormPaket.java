@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+import Utils.CetakLaporan;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -122,6 +123,7 @@ public class FormPaket extends javax.swing.JFrame {
         fieldCariPaket = new javax.swing.JTextField();
         cariPaket = new javax.swing.JLabel();
         tombolCari = new javax.swing.JButton();
+        tombolCetakLaporan = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -308,25 +310,32 @@ public class FormPaket extends javax.swing.JFrame {
         });
         jScrollPane3.setViewportView(tabel);
 
-        cariPaket.setText("Cari Paket");
+        cariPaket.setText("Cari Data Paket");
 
         tombolCari.setBackground(new java.awt.Color(0, 0, 102));
         tombolCari.setForeground(new java.awt.Color(255, 255, 255));
         tombolCari.setText("Cari");
         tombolCari.addActionListener(this::tombolCariActionPerformed);
 
+        tombolCetakLaporan.setBackground(new java.awt.Color(0, 153, 51));
+        tombolCetakLaporan.setForeground(new java.awt.Color(255, 255, 255));
+        tombolCetakLaporan.setText("Cetak Laporan");
+        tombolCetakLaporan.addActionListener(this::tombolCetakLaporanActionPerformed);
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(16, 16, 16)
+                .addContainerGap()
                 .addComponent(cariPaket)
-                .addGap(18, 18, 18)
-                .addComponent(fieldCariPaket, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(fieldCariPaket, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tombolCari)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(tombolCetakLaporan)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -334,12 +343,10 @@ public class FormPaket extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldCariPaket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cariPaket))
+                    .addComponent(cariPaket)
+                    .addComponent(tombolCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tombolCetakLaporan))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tombolCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
 
         jPanel8.setBackground(new java.awt.Color(204, 204, 255));
@@ -432,13 +439,14 @@ public class FormPaket extends javax.swing.JFrame {
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(12, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jScrollPane3)
                         .addContainerGap())))
             .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -454,7 +462,7 @@ public class FormPaket extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -643,6 +651,29 @@ public class FormPaket extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_tombolCariActionPerformed
 
+    private void tombolCetakLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakLaporanActionPerformed
+        // TODO add your handling code here:
+        try {
+            String html = CetakLaporan.generateHTML(
+                    "LAPORAN DATA PAKET FITNESS",
+                    tabel
+            );
+
+            CetakLaporan.bukaHTML(
+                    html,
+                    "laporan_paket_fitness.html"
+            );
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    e.getMessage()
+            );
+
+        }
+    }//GEN-LAST:event_tombolCetakLaporanActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -696,6 +727,7 @@ public class FormPaket extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tabel;
     private javax.swing.JButton tombolCari;
+    private javax.swing.JButton tombolCetakLaporan;
     private javax.swing.JButton tombolClear;
     private javax.swing.JButton tombolEdit;
     private javax.swing.JButton tombolHapus;

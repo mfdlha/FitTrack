@@ -16,7 +16,7 @@ import Utils.CetakLaporan;
  * @author feria
  */
 public class FormKelas extends javax.swing.JFrame {
-    int idKelas = 0;
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormKelas.class.getName());
 
     /**
@@ -26,6 +26,8 @@ public class FormKelas extends javax.swing.JFrame {
     public FormKelas (){
         initComponents();
         tampilData();
+        setSize(800, 600);
+        setLocationRelativeTo(null);
         spinnerJamMulai.setModel(new SpinnerDateModel(new java.util.Date(), null, null, java.util.Calendar.HOUR_OF_DAY));
         JSpinner.DateEditor editorMulai = new JSpinner.DateEditor(spinnerJamMulai, "HH:mm");
         spinnerJamMulai.setEditor(editorMulai);
@@ -144,27 +146,27 @@ public class FormKelas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        tombolSimpan.setBackground(new java.awt.Color(51, 51, 255));
+        tombolSimpan.setBackground(new java.awt.Color(0, 0, 204));
         tombolSimpan.setForeground(new java.awt.Color(255, 255, 255));
         tombolSimpan.setText("Simpan");
         tombolSimpan.addActionListener(this::tombolSimpanActionPerformed);
 
-        tombolEdit.setBackground(new java.awt.Color(153, 153, 0));
+        tombolEdit.setBackground(new java.awt.Color(204, 204, 0));
         tombolEdit.setForeground(new java.awt.Color(255, 255, 255));
         tombolEdit.setText("Edit");
         tombolEdit.addActionListener(this::tombolEditActionPerformed);
 
-        tombolHapus.setBackground(new java.awt.Color(255, 51, 51));
+        tombolHapus.setBackground(new java.awt.Color(255, 0, 51));
         tombolHapus.setForeground(new java.awt.Color(255, 255, 255));
         tombolHapus.setText("Hapus");
         tombolHapus.addActionListener(this::tombolHapusActionPerformed);
 
-        tombolBersihkan.setBackground(new java.awt.Color(102, 102, 102));
+        tombolBersihkan.setBackground(new java.awt.Color(153, 153, 153));
         tombolBersihkan.setForeground(new java.awt.Color(255, 255, 255));
         tombolBersihkan.setText("Bersihkan");
         tombolBersihkan.addActionListener(this::tombolBersihkanActionPerformed);
 
-        tombolCetakLaporan.setBackground(new java.awt.Color(0, 204, 102));
+        tombolCetakLaporan.setBackground(new java.awt.Color(0, 153, 51));
         tombolCetakLaporan.setForeground(new java.awt.Color(255, 255, 255));
         tombolCetakLaporan.setText("Cetak Laporan");
         tombolCetakLaporan.addActionListener(this::tombolCetakLaporanActionPerformed);
@@ -758,13 +760,13 @@ public class FormKelas extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String html = CetakLaporan.generateHTML(
-                    "LAPORAN DATA PAKET GYM",
+                    "LAPORAN DATA KELAS FITNESS",
                     tabel
             );
 
             CetakLaporan.bukaHTML(
                     html,
-                    "laporan_paket_gym.html"
+                    "laporan_kelas_fitness.html"
             );
 
         } catch (Exception e) {
