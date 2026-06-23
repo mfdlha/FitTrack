@@ -234,7 +234,7 @@ public class FormKelas extends javax.swing.JFrame {
 
         namaKelas.setOpaque(false);
 
-        labelNamaKelas.setText("Nama Kelas:");
+        labelNamaKelas.setText("Nama Kelas");
 
         javax.swing.GroupLayout namaKelasLayout = new javax.swing.GroupLayout(namaKelas);
         namaKelas.setLayout(namaKelasLayout);
@@ -242,24 +242,24 @@ public class FormKelas extends javax.swing.JFrame {
             namaKelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(namaKelasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelNamaKelas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelNamaKelas, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(fieldNamaKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         namaKelasLayout.setVerticalGroup(
             namaKelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(namaKelasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(namaKelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(fieldNamaKelas)
-                    .addComponent(labelNamaKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(namaKelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNamaKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fieldNamaKelas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         hari.setOpaque(false);
 
-        labelHari.setText("Hari:");
+        labelHari.setText("Hari");
 
         boxHari.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu" }));
         boxHari.setSelectedIndex(-1);
@@ -270,10 +270,10 @@ public class FormKelas extends javax.swing.JFrame {
             hariLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(hariLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelHari, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(boxHari, 0, 250, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(labelHari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(boxHari, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8))
         );
         hariLayout.setVerticalGroup(
             hariLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,10 +297,10 @@ public class FormKelas extends javax.swing.JFrame {
             kapasitasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(kapasitasLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(labelKapasitas, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelKapasitas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(spinnerKapasitas, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(spinnerKapasitas, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
                 .addContainerGap())
         );
@@ -317,7 +317,7 @@ public class FormKelas extends javax.swing.JFrame {
 
         instruktur.setOpaque(false);
 
-        labelInstruktur.setText("Instruktur:");
+        labelInstruktur.setText("Instruktur");
 
         javax.swing.GroupLayout instrukturLayout = new javax.swing.GroupLayout(instruktur);
         instruktur.setLayout(instrukturLayout);
@@ -342,7 +342,7 @@ public class FormKelas extends javax.swing.JFrame {
 
         jamMulai.setOpaque(false);
 
-        labelJamMulai.setText("Jam Mulai:");
+        labelJamMulai.setText("Jam Mulai");
 
         javax.swing.GroupLayout jamMulaiLayout = new javax.swing.GroupLayout(jamMulai);
         jamMulai.setLayout(jamMulaiLayout);
@@ -367,7 +367,7 @@ public class FormKelas extends javax.swing.JFrame {
 
         jamSelesai.setOpaque(false);
 
-        labelJamSelesai.setText("Jam Selesai:");
+        labelJamSelesai.setText("Jam Selesai");
 
         javax.swing.GroupLayout jamSelesaiLayout = new javax.swing.GroupLayout(jamSelesai);
         jamSelesai.setLayout(jamSelesaiLayout);
@@ -395,17 +395,17 @@ public class FormKelas extends javax.swing.JFrame {
         textFieldLayout.setHorizontalGroup(
             textFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(textFieldLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(textFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hari, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(namaKelas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(kapasitas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addGroup(textFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(namaKelas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(hari, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(kapasitas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(textFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jamSelesai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jamMulai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(instruktur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jamSelesai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(instruktur, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jamMulai, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         textFieldLayout.setVerticalGroup(
             textFieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

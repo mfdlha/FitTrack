@@ -245,19 +245,19 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="hari" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="namaKelas" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="kapasitas" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="namaKelas" alignment="1" max="32767" attributes="0"/>
+                          <Component id="hari" alignment="1" max="32767" attributes="0"/>
+                          <Component id="kapasitas" alignment="1" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jamSelesai" alignment="1" max="32767" attributes="0"/>
-                          <Component id="jamMulai" alignment="1" max="32767" attributes="0"/>
+                          <Component id="jamSelesai" alignment="1" max="-2" attributes="0"/>
                           <Component id="instruktur" alignment="0" max="32767" attributes="0"/>
+                          <Component id="jamMulai" alignment="1" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="40" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -299,10 +299,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelNamaKelas" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelNamaKelas" pref="79" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="fieldNamaKelas" min="-2" pref="250" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -310,9 +310,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="fieldNamaKelas" max="32767" attributes="0"/>
-                              <Component id="labelNamaKelas" min="-2" pref="23" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="labelNamaKelas" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="fieldNamaKelas" alignment="3" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -322,7 +322,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="labelNamaKelas">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Nama Kelas:"/>
+                    <Property name="text" type="java.lang.String" value="Nama Kelas"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldNamaKelas">
@@ -339,10 +339,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelHari" min="-2" pref="81" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="boxHari" pref="250" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="labelHari" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="boxHari" min="-2" pref="250" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -362,7 +362,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="labelHari">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Hari:"/>
+                    <Property name="text" type="java.lang.String" value="Hari"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="boxHari">
@@ -396,10 +396,10 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="labelKapasitas" min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="labelKapasitas" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="32767" attributes="0"/>
+                          <Component id="spinnerKapasitas" min="-2" pref="206" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="spinnerKapasitas" min="-2" pref="199" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -467,7 +467,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="labelInstruktur">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Instruktur:"/>
+                    <Property name="text" type="java.lang.String" value="Instruktur"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="fieldInstruktur">
@@ -507,7 +507,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="labelJamMulai">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Jam Mulai:"/>
+                    <Property name="text" type="java.lang.String" value="Jam Mulai"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="spinnerJamMulai">
@@ -547,7 +547,7 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="labelJamSelesai">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Jam Selesai:"/>
+                    <Property name="text" type="java.lang.String" value="Jam Selesai"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JSpinner" name="spinnerJamSelesai">
