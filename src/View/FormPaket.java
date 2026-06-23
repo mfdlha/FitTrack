@@ -9,14 +9,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fadil
  */
-public class tambahPaket extends javax.swing.JFrame {
+public class FormPaket extends javax.swing.JFrame {
     String idPaket;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(tambahPaket.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormPaket.class.getName());
 
     /**
      * Creates new form tambah_paket
      */
-    public tambahPaket() {
+    public FormPaket() {
         initComponents();
         tampilData();
         setSize(800, 600);
@@ -55,7 +55,7 @@ public class tambahPaket extends javax.swing.JFrame {
                 });
             }
 
-            tabelData.setModel(model);
+            tabel.setModel(model);
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Gagal Menampilkan Data : " + e.getMessage());
@@ -117,20 +117,28 @@ public class tambahPaket extends javax.swing.JFrame {
         fieldNamaPaket = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tabelData = new javax.swing.JTable();
-        tombolSimpan = new javax.swing.JButton();
+        tabel = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
+        fieldCariPaket = new javax.swing.JTextField();
+        cariPaket = new javax.swing.JLabel();
+        tombolCari = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
         tombolEdit = new javax.swing.JButton();
-        tombolClear = new javax.swing.JButton();
+        tombolSimpan = new javax.swing.JButton();
         tombolHapus = new javax.swing.JButton();
+        tombolClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(51, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 255));
 
         jLabel1.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Tambah Paket");
+        jLabel1.setText("PAKET FITNESS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -282,7 +290,7 @@ public class tambahPaket extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tabelData.setModel(new javax.swing.table.DefaultTableModel(
+        tabel.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -293,26 +301,123 @@ public class tambahPaket extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        tabelData.addMouseListener(new java.awt.event.MouseAdapter() {
+        tabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tabelDataMouseClicked(evt);
+                tabelMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(tabelData);
+        jScrollPane3.setViewportView(tabel);
 
-        tombolSimpan.setText("Simpan");
-        tombolSimpan.addActionListener(this::tombolSimpanActionPerformed);
+        cariPaket.setText("Cari Paket");
 
+        tombolCari.setBackground(new java.awt.Color(0, 0, 102));
+        tombolCari.setForeground(new java.awt.Color(255, 255, 255));
+        tombolCari.setText("Cari");
+        tombolCari.addActionListener(this::tombolCariActionPerformed);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(cariPaket)
+                .addGap(18, 18, 18)
+                .addComponent(fieldCariPaket, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tombolCari)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fieldCariPaket, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cariPaket))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tombolCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel8.setBackground(new java.awt.Color(204, 204, 255));
+
+        jLabel7.setText("FORM INPUT DATA PAKET FITNESS");
+
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Kembali");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jButton1))
+                .addContainerGap())
+        );
+
+        tombolEdit.setBackground(new java.awt.Color(204, 204, 0));
+        tombolEdit.setForeground(new java.awt.Color(255, 255, 255));
         tombolEdit.setText("Edit");
         tombolEdit.addActionListener(this::tombolEditActionPerformed);
 
-        tombolClear.setText("Clear");
-        tombolClear.addActionListener(this::tombolClearActionPerformed);
+        tombolSimpan.setBackground(new java.awt.Color(0, 0, 204));
+        tombolSimpan.setForeground(new java.awt.Color(255, 255, 255));
+        tombolSimpan.setText("Simpan");
+        tombolSimpan.addActionListener(this::tombolSimpanActionPerformed);
 
         tombolHapus.setBackground(new java.awt.Color(255, 0, 51));
         tombolHapus.setForeground(new java.awt.Color(255, 255, 255));
         tombolHapus.setText("Hapus");
         tombolHapus.addActionListener(this::tombolHapusActionPerformed);
+
+        tombolClear.setBackground(new java.awt.Color(153, 153, 153));
+        tombolClear.setForeground(new java.awt.Color(255, 255, 255));
+        tombolClear.setText("Clear");
+        tombolClear.addActionListener(this::tombolClearActionPerformed);
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(tombolSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tombolEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tombolClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(tombolSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tombolClear, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -321,41 +426,36 @@ public class tambahPaket extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tombolSimpan, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                            .addComponent(tombolEdit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tombolClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(tombolHapus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 12, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(12, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
+            .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(tombolSimpan, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tombolEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tombolClear, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
-                        .addComponent(tombolHapus, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -474,16 +574,16 @@ public class tambahPaket extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_fieldNamaPaketActionPerformed
 
-    private void tabelDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataMouseClicked
+    private void tabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelMouseClicked
         // TODO add your handling code here:
-        int baris = tabelData.getSelectedRow();
+        int baris = tabel.getSelectedRow();
 
             if (baris != -1) {
-                fieldNamaPaket.setText(tabelData.getValueAt(baris, 1).toString());
-                fieldDeskripsi.setText(tabelData.getValueAt(baris, 4).toString());
-                idPaket = tabelData.getValueAt(baris, 0).toString();
+                fieldNamaPaket.setText(tabel.getValueAt(baris, 1).toString());
+                fieldDeskripsi.setText(tabel.getValueAt(baris, 4).toString());
+                idPaket = tabel.getValueAt(baris, 0).toString();
 
-            String masaAktifTabel = tabelData.getValueAt(baris, 2).toString();
+            String masaAktifTabel = tabel.getValueAt(baris, 2).toString();
                     if (masaAktifTabel.equals("Unlimited")) {
                         fieldSpinMasaAktif.setValue(0);
                     } else {
@@ -491,7 +591,7 @@ public class tambahPaket extends javax.swing.JFrame {
                         fieldSpinMasaAktif.setValue(Integer.parseInt(masaAktifAngka));
                     }
 
-                String hargaTabel = tabelData.getValueAt(baris, 3).toString();
+                String hargaTabel = tabel.getValueAt(baris, 3).toString();
                 String hargaBersih = hargaTabel.replaceAll("[^0-9]", ""); 
 
                 if (hargaBersih.endsWith("00") && hargaTabel.contains(",")) {
@@ -500,7 +600,48 @@ public class tambahPaket extends javax.swing.JFrame {
 
                 fieldHarga.setText(hargaBersih); 
             }
-    }//GEN-LAST:event_tabelDataMouseClicked
+    }//GEN-LAST:event_tabelMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tombolCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCariActionPerformed
+        // TODO add your handling code here:
+        String keyword = fieldCariPaket.getText(); 
+
+        javax.swing.table.DefaultTableModel model = new javax.swing.table.DefaultTableModel();
+        model.addColumn("ID Paket"); 
+        model.addColumn("Nama Paket");
+        model.addColumn("Masa Aktif");
+        model.addColumn("Harga");
+        model.addColumn("Deskripsi");
+
+        try {
+            Dao.PaketDAO dao = new Dao.PaketDAOImpl();
+            java.util.List<Model.Paket> listPaket = dao.getByName(keyword);
+
+            // 4. Looping data hasil pencarian ke dalam model tabel
+            for (Model.Paket p : listPaket) {
+                model.addRow(new Object[]{
+                    p.getIdPaket(),
+                    p.getNamaPaket(),
+                    p.getMasaAktif(),
+                    p.getHarga(),
+                    p.getDeskripsi()
+                });
+            }
+
+            tabel.setModel(model); 
+
+            if (listPaket.isEmpty()) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Data paket tidak ditemukan!", "Informasi", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error pencarian: " + e.getMessage(), "Error System", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_tombolCariActionPerformed
 
     /**
      * @param args the command line arguments
@@ -524,29 +665,37 @@ public class tambahPaket extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new tambahPaket().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FormPaket().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cariPaket;
+    private javax.swing.JTextField fieldCariPaket;
     private javax.swing.JTextArea fieldDeskripsi;
     private javax.swing.JTextField fieldHarga;
     private javax.swing.JTextField fieldNamaPaket;
     private javax.swing.JSpinner fieldSpinMasaAktif;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable tabelData;
+    private javax.swing.JTable tabel;
+    private javax.swing.JButton tombolCari;
     private javax.swing.JButton tombolClear;
     private javax.swing.JButton tombolEdit;
     private javax.swing.JButton tombolHapus;

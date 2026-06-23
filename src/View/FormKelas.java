@@ -204,7 +204,7 @@ public class FormKelas extends javax.swing.JFrame {
         formInputDataKelas.setBackground(new java.awt.Color(204, 204, 255));
 
         labelFormInputDataKelas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labelFormInputDataKelas.setText("FORM INPUT DATA KELAS");
+        labelFormInputDataKelas.setText("FORM INPUT DATA KELAS FITNESS");
 
         tombolKembali.setBackground(new java.awt.Color(153, 153, 153));
         tombolKembali.setForeground(new java.awt.Color(255, 255, 255));
@@ -431,9 +431,10 @@ public class FormKelas extends javax.swing.JFrame {
         headerKelasFitness.setBackground(new java.awt.Color(51, 0, 255));
 
         kelasFitness.setBackground(new java.awt.Color(0, 0, 255));
+        kelasFitness.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         kelasFitness.setForeground(new java.awt.Color(255, 255, 255));
         kelasFitness.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        kelasFitness.setText("Kelas Fitness");
+        kelasFitness.setText("KELAS FITNESS");
 
         javax.swing.GroupLayout headerKelasFitnessLayout = new javax.swing.GroupLayout(headerKelasFitness);
         headerKelasFitness.setLayout(headerKelasFitnessLayout);
@@ -495,35 +496,35 @@ public class FormKelas extends javax.swing.JFrame {
 
         cariDataKelas.setBackground(new java.awt.Color(255, 255, 255));
 
-        tombolCari.setBackground(new java.awt.Color(51, 51, 255));
+        tombolCari.setBackground(new java.awt.Color(0, 0, 102));
         tombolCari.setForeground(new java.awt.Color(255, 255, 255));
         tombolCari.setText("Cari");
         tombolCari.addActionListener(this::tombolCariActionPerformed);
 
-        labelCariDataKelas.setText("Cari Data Kelas:");
+        labelCariDataKelas.setText("Cari Data Kelas");
 
         javax.swing.GroupLayout cariDataKelasLayout = new javax.swing.GroupLayout(cariDataKelas);
         cariDataKelas.setLayout(cariDataKelasLayout);
         cariDataKelasLayout.setHorizontalGroup(
             cariDataKelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(cariDataKelasLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(12, 12, 12)
                 .addComponent(labelCariDataKelas)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(fieldCariKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(tombolCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(tombolCari)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         cariDataKelasLayout.setVerticalGroup(
             cariDataKelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(cariDataKelasLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cariDataKelasLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addGroup(cariDataKelasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fieldCariKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tombolCari)
                     .addComponent(labelCariDataKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGap(15, 15, 15))
         );
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -538,8 +539,7 @@ public class FormKelas extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addComponent(cariDataKelas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tabelDataKelas, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(tabelDataKelas, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -554,8 +554,7 @@ public class FormKelas extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, 257, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
