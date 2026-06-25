@@ -5,12 +5,13 @@
         <group>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/Dashboard.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/MemberDAO.java</file>
-            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/Kelas.java</file>
-            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/tambahPaket.java</file>
-            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/lihatPaket.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/transaksi.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/auth/login.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/koneksi/koneksi.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/PaketDAO.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/FormPaket.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/FormKelas.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/Data_Member.java</file>
         </group>
     </open-files>
 </project-private>
