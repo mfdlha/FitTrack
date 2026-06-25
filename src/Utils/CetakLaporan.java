@@ -5,130 +5,39 @@
 package Utils;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import javax.swing.JTable;
 /**
  *
  * @author fadil
  */
 public class CetakLaporan {
-    public static String generateHTML(String judul, JTable tabel) {
-    StringBuilder html = new StringBuilder();
+public static void exportToHTML(JTable table, String namaFile) throws Exception {
+        // Path khusus untuk report, misalnya di dalam folder "report" di root proyek
+        File folder = new File("report");
+        if (!folder.exists()) folder.mkdir(); // Buat folder jika belum ada
 
-        html.append("<!DOCTYPE html>");
-        html.append("<html>");
-        html.append("<head>");
-        html.append("<meta charset='UTF-8'>");
-
-        html.append("<title>");
-        html.append(judul);
-        html.append("</title>");
-
-        html.append("<style>");
-        html.append("body{font-family:Arial,sans-serif;margin:25px;}");
-        html.append("h2{text-align:center;}");
-        html.append("p{text-align:right;font-size:12px;}");
-        html.append("table{border-collapse:collapse;width:100%;margin-top:15px;}");
-        html.append("th,td{border:1px solid black;padding:8px;}");
-        html.append("th{background:#e6e6e6;}");
-        html.append("</style>");
-
-        // Jika ingin dialog print langsung muncul
-        // html.append("<script>window.onload=function(){window.print();}</script>");
-
-        html.append("</head>");
-        html.append("<body>");
-
-        html.append("<h2>");
-        html.append(judul);
-        html.append("</h2>");
-
-        DateTimeFormatter format =
-                DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-
-        html.append("<p>Tanggal Cetak : ");
-        html.append(LocalDateTime.now().format(format));
-        html.append("</p>");
-
-        html.append("<hr>");
-
-        html.append("<table>");
-
+        FileWriter out = new FileWriter("report/" + namaFile + ".html");
+        out.write("<html><body>");
+        out.write("<h1>Laporan Transaksi FitTrack</h1>");
+        out.write("<table border='1' cellpadding='5' style='border-collapse:collapse; width:100%'>");
+        
         // Header
-        html.append("<tr>");
-
-        for (int i = 0; i < tabel.getColumnCount(); i++) {
-
-            html.append("<th>");
-            html.append(tabel.getColumnName(i));
-            html.append("</th>");
-
+        out.write("<tr style='background-color:#f2f2f2;'>");
+        for (int i = 0; i < table.getColumnCount(); i++) {
+            out.write("<th>" + table.getColumnName(i) + "</th>");
         }
-
-        html.append("</tr>");
-
+        out.write("</tr>");
+        
         // Data
-        for (int i = 0; i < tabel.getRowCount(); i++) {
-
-            html.append("<tr>");
-
-            for (int j = 0; j < tabel.getColumnCount(); j++) {
-
-                Object value = tabel.getValueAt(i, j);
-
-                html.append("<td>");
-                html.append(value == null ? "" : value.toString());
-                html.append("</td>");
-
+        for (int i = 0; i < table.getRowCount(); i++) {
+            out.write("<tr>");
+            for (int j = 0; j < table.getColumnCount(); j++) {
+                out.write("<td>" + table.getValueAt(i, j).toString() + "</td>");
             }
-
-            html.append("</tr>");
-
+            out.write("</tr>");
         }
-
-        html.append("</table>");
-
-        html.append("</body>");
-        html.append("</html>");
-
-        return html.toString();
-
-    }
-
-    // ==========================
-    // Simpan HTML lalu buka browser
-    // ==========================
-    public static void bukaHTML(String html, String namaFile) throws IOException {
-
-        File file = new File(System.getProperty("user.home"), namaFile);
-
-        try (FileWriter writer = new FileWriter(file)) {
-            writer.write(html);
-        }
-
-        try {
-
-            Process process = new ProcessBuilder(
-                    "/usr/bin/flatpak-spawn",
-                    "--host",
-                    "xdg-open",
-                    file.toURI().toString()
-            ).start();
-
-            process.waitFor();
-
-        } catch (Exception e) {
-
-            throw new IOException(
-                    "File berhasil dibuat di:\n"
-                    + file.getAbsolutePath()
-                    + "\n\nTetapi browser gagal dibuka.",
-                    e
-            );
-
-        }
-
+        
+        out.write("</table></body></html>");
+        out.close();
     }
 }

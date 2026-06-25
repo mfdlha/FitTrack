@@ -759,23 +759,10 @@ public class FormKelas extends javax.swing.JFrame {
     private void tombolCetakLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakLaporanActionPerformed
         // TODO add your handling code here:
         try {
-            String html = CetakLaporan.generateHTML(
-                    "LAPORAN DATA KELAS FITNESS",
-                    tabel
-            );
-
-            CetakLaporan.bukaHTML(
-                    html,
-                    "laporan_kelas_fitness.html"
-            );
-
+            Utils.CetakLaporan.exportToHTML(tabel, "LaporanKelas");
+            JOptionPane.showMessageDialog(this, "Berhasil! Laporan tersimpan di folder 'FitTrack/report/LaporanKelas.html'");
         } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    e.getMessage()
-            );
-
+            JOptionPane.showMessageDialog(this, "Gagal membuat laporan: " + e.getMessage());
         }
     }//GEN-LAST:event_tombolCetakLaporanActionPerformed
 

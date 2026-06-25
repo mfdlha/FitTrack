@@ -4,27 +4,49 @@
  */
 package koneksi;
 
+import java.io.FileInputStream;
+import java.util.Properties;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
+
 /**
  *
  * @author fadil
  */
 public class koneksi {
-    private static final String URL = "jdbc:mysql://localhost:3306/db_fitness";
-    private static final String USER = "root";
-    private static final String PASSWORD = "12345";
     
-    public static Connection getConnection(){
-        try{
-            Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Koneksi db berhasil!");
+    public static Connection getConnection() {
+        try {
+            Properties props = new Properties();
+
+            try (FileInputStream fis = new FileInputStream("config.properties")) {
+                props.load(fis);
+            } catch (Exception e) {
+                System.out.println("File config.properties tidak ditemukan atau gagal dibaca!");
+                return null;
+            }
+
+            String host = props.getProperty("db.host");
+            String port = props.getProperty("db.port");
+            String database = props.getProperty("db.name");
+            String user = props.getProperty("db.user");
+            String pass = props.getProperty("db.pass");
+
+            String url = "jdbc:mysql://" + host + ":" + port + "/" + database + "?useSSL=false&allowPublicKeyRetrieval=true";
+
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } catch (ClassNotFoundException e) {
+                Class.forName("com.mysql.jdbc.Driver"); 
+            }
+
+            Connection conn = DriverManager.getConnection(url, user, pass);
+            System.out.println("Koneksi database AWS RDS berhasil!");
             return conn;
-        } catch(SQLException e){
+            
+        } catch (Exception e) {
             System.out.println("Koneksi database gagal!");
             System.out.println(e.getMessage());
-            
             return null;
         }
     }

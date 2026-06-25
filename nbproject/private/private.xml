@@ -4,14 +4,26 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/Dashboard.java</file>
-            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/MemberDAO.java</file>
-            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/transaksi.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/FormTransaksi.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/auth/login.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/koneksi/koneksi.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/PaketDAO.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/FormPaket.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/FormKelas.java</file>
             <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/Data_Member.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/DialogCariMember.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Model/Member.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/MemberDAO.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/MemberDAOImpl.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/PaketDAOImpl.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/KelasDAOImpl.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/KelasDAO.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Model/Kelas.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/View/DialogCariPaket.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Model/Transaksi.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/TransaksiDAO.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Dao/TransaksiDAOImpl.java</file>
+            <file>file:/home/fadil/NetBeansProjects/FitTrack/src/Utils/CetakLaporan.java</file>
         </group>
     </open-files>
 </project-private>

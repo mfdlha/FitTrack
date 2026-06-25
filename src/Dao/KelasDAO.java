@@ -3,19 +3,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Dao;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 import Model.Kelas;
+import java.util.List;
 /**
  *
  * @author fadil
  */
-public interface KelasDAO{
-    boolean insert(Kelas kelas);
-    boolean update(Kelas kelas);
-    boolean delete(int idKelas);
-    List<Kelas> getAll(String keyword);
+public interface KelasDAO {
+    public boolean insert(Kelas kelas);
+    public boolean update(Kelas kelas);
+    public boolean delete(int idKelas);
+    public List<Kelas> getAll(String keyword);
 }

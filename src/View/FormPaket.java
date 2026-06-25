@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-import Utils.CetakLaporan;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
@@ -45,7 +44,7 @@ public class FormPaket extends javax.swing.JFrame {
                     if (p.getMasaAktif() == 0) {
                         teksMasaAktif = "Unlimited"; 
                     } else {
-                        teksMasaAktif = p.getMasaAktif() + " Bulan"; 
+                        teksMasaAktif = p.getMasaAktif() + " Hari"; 
                     }
                 model.addRow(new Object[] {
                     p.getIdPaket(),
@@ -161,7 +160,7 @@ public class FormPaket extends javax.swing.JFrame {
 
         jLabel3.setText("Masa Aktif");
 
-        jLabel6.setText("Bulan");
+        jLabel6.setText("Hari");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -172,9 +171,9 @@ public class FormPaket extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(fieldSpinMasaAktif, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel6)
-                .addGap(33, 33, 33))
+                .addGap(37, 37, 37))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -476,12 +475,18 @@ public class FormPaket extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Nama Paket dan Harga wajib diisi!");
             return;
         }
-
+        
         try {
             String nama = fieldNamaPaket.getText();
             int masaAktifObj = (int) fieldSpinMasaAktif.getValue(); 
             double hargaObj = Double.parseDouble(fieldHarga.getText()); 
             String deskripsi = fieldDeskripsi.getText();
+
+            if (masaAktifObj <= 0) {
+                JOptionPane.showMessageDialog(null, "Masa aktif tidak boleh 0 atau negatif!");
+                fieldSpinMasaAktif.requestFocus(); 
+                return; 
+            }
 
             Model.Paket p = new Model.Paket();
             p.setNamaPaket(nama);
@@ -526,6 +531,12 @@ public class FormPaket extends javax.swing.JFrame {
             p.setMasaAktif(masaAktifObj); 
             p.setHarga(hargaObj);
             p.setDeskripsi(fieldDeskripsi.getText());
+            
+            if (masaAktifObj <= 0) {
+                JOptionPane.showMessageDialog(null, "Masa aktif tidak boleh 0 atau negatif!");
+                fieldSpinMasaAktif.requestFocus();
+                return;
+            }
 
             Dao.PaketDAO dao = new Dao.PaketDAOImpl();
             dao.update(p); 
@@ -595,7 +606,7 @@ public class FormPaket extends javax.swing.JFrame {
                     if (masaAktifTabel.equals("Unlimited")) {
                         fieldSpinMasaAktif.setValue(0);
                     } else {
-                        String masaAktifAngka = masaAktifTabel.replace(" Bulan", "").trim();
+                        String masaAktifAngka = masaAktifTabel.replace(" Hari", "").trim();
                         fieldSpinMasaAktif.setValue(Integer.parseInt(masaAktifAngka));
                     }
 
@@ -654,23 +665,10 @@ public class FormPaket extends javax.swing.JFrame {
     private void tombolCetakLaporanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolCetakLaporanActionPerformed
         // TODO add your handling code here:
         try {
-            String html = CetakLaporan.generateHTML(
-                    "LAPORAN DATA PAKET FITNESS",
-                    tabel
-            );
-
-            CetakLaporan.bukaHTML(
-                    html,
-                    "laporan_paket_fitness.html"
-            );
-
+            Utils.CetakLaporan.exportToHTML(tabel, "LaporanPaket");
+            JOptionPane.showMessageDialog(this, "Berhasil! Laporan tersimpan di folder 'FitTrack/report/LaporanPaket.html'");
         } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(
-                    this,
-                    e.getMessage()
-            );
-
+            JOptionPane.showMessageDialog(this, "Gagal membuat laporan: " + e.getMessage());
         }
     }//GEN-LAST:event_tombolCetakLaporanActionPerformed
 

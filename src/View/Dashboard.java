@@ -360,7 +360,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
         // TODO add your handling code here:
-        new transaksi().setVisible(true);
+        new FormTransaksi().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu3ActionPerformed
 

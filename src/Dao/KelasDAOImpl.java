@@ -18,7 +18,7 @@ public class KelasDAOImpl implements KelasDAO {
     @Override
     public boolean insert(Kelas kelas) {
         String sql = "INSERT INTO kelas (nama_kelas, instruktur, hari, jam_mulai, jam_selesai, kapasitas) VALUES (?, ?, ?, ?, ?, ?)";
-        try (Connection conn = koneksi.getConnection(); // Sesuaikan dengan package class Koneksi
+        try (Connection conn = koneksi.getConnection(); 
              PreparedStatement pst = conn.prepareStatement(sql)) {
             
             pst.setString(1, kelas.getNamaKelas());
