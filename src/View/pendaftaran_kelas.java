@@ -3,20 +3,88 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.text.SimpleDateFormat;
+import Koneksi.koneksi;
+import java.util.Date;
 /**
  *
  * @author Ahmad Sauqi Zamzami
  */
 public class pendaftaran_kelas extends javax.swing.JFrame {
+    Connection conn;
+    PreparedStatement pst;
+    ResultSet rs;
+    DefaultTableModel model;
 
     /**
      * Creates new form pendaftaran_kelas
      */
     public pendaftaran_kelas() {
         initComponents();
-    }
+         conn = koneksi.getKoneksi(); 
 
+    tampilData();
+
+    javax.swing.ButtonGroup bg = new javax.swing.ButtonGroup();
+    bg.add(jRadioButton1);
+    bg.add(jRadioButton2);
+    }
+    
+private void tampilData(){
+
+    model = new DefaultTableModel();
+
+    model.addColumn("ID Pendaftaran");
+    model.addColumn("ID Member");
+    model.addColumn("ID Kelas");
+    model.addColumn("Tanggal Daftar");
+    model.addColumn("Status");
+
+    try {
+
+        String sql =
+        "SELECT * FROM pendaftaran_kelas";
+
+        pst = conn.prepareStatement(sql);
+
+        rs = pst.executeQuery();
+
+        while(rs.next()){
+
+            model.addRow(new Object[]{
+                rs.getString("id_pendaftaran"),
+                rs.getString("id_member"),
+                rs.getString("id_kelas"),
+                rs.getString("tgl_daftar"),
+                rs.getString("status_kehadiran")
+            });
+
+        }
+
+        jTable4.setModel(model);
+
+    } catch(Exception e){
+
+        JOptionPane.showMessageDialog(null,e);
+
+    }
+}
+private void kosongkanForm(){
+
+    jTextField1.setText("");
+    jTextField2.setText("");
+
+    jDateChooser1.setDate(null);
+
+    jRadioButton1.setSelected(false);
+    jRadioButton2.setSelected(false);
+
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,11 +162,26 @@ public class pendaftaran_kelas extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(102, 255, 102));
         jButton1.setText("Simpan");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Edit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setBackground(new java.awt.Color(255, 51, 51));
         jButton3.setText("Hapus");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,6 +194,11 @@ public class pendaftaran_kelas extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable4MouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTable4);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -202,6 +290,198 @@ public class pendaftaran_kelas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         try {
+              if(jTextField1.getText().isEmpty() ||
+           jTextField2.getText().isEmpty() ||
+           jDateChooser1.getDate() == null){
+
+            JOptionPane.showMessageDialog(this,
+            "Lengkapi data terlebih dahulu");
+
+            return;
+        }
+              if(!jRadioButton1.isSelected() &&
+   !jRadioButton2.isSelected()){
+
+    JOptionPane.showMessageDialog(this,
+    "Pilih status kehadiran");
+
+    return;
+}
+
+        String status = "";
+
+        if(jRadioButton1.isSelected()){
+            status = "H";
+        }
+
+        if(jRadioButton2.isSelected()){
+            status = "TH";
+        }
+
+        SimpleDateFormat sdf =
+        new SimpleDateFormat("yyyy-MM-dd");
+
+        String tanggal =
+        sdf.format(jDateChooser1.getDate());
+
+        String sql =
+        "INSERT INTO pendaftaran_kelas(id_member,id_kelas,tgl_daftar,status_kehadiran) VALUES(?,?,?,?)";
+
+        pst = conn.prepareStatement(sql);
+
+        pst.setString(1, jTextField1.getText());
+        pst.setString(2, jTextField2.getText());
+        pst.setString(3, tanggal);
+        pst.setString(4, status);
+
+        pst.executeUpdate();
+
+        JOptionPane.showMessageDialog(null,
+        "Data berhasil disimpan");
+
+        tampilData();
+        kosongkanForm();
+
+    } catch(Exception e){
+
+        JOptionPane.showMessageDialog(null,e);
+
+    }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
+        // TODO add your handling code here:
+         try {
+
+        int baris = jTable4.getSelectedRow();
+
+        jTextField1.setText(
+        jTable4.getValueAt(baris,1).toString());
+
+        jTextField2.setText(
+        jTable4.getValueAt(baris,2).toString());
+
+        Date tgl = new SimpleDateFormat("yyyy-MM-dd")
+                .parse(jTable4.getValueAt(baris,3).toString());
+
+        jDateChooser1.setDate(tgl);
+
+        String status =
+        jTable4.getValueAt(baris,4).toString();
+
+        if(status.equals("H")){
+            jRadioButton1.setSelected(true);
+        }else{
+            jRadioButton2.setSelected(true);
+        }
+
+    } catch(Exception e){
+        e.printStackTrace();
+    }
+    }//GEN-LAST:event_jTable4MouseClicked
+            
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+         try {
+             if(jTable4.getSelectedRow() == -1){
+
+    JOptionPane.showMessageDialog(this,
+    "Pilih data terlebih dahulu");
+
+    return;
+}
+
+        int baris =
+        jTable4.getSelectedRow();
+
+        String id =
+        jTable4.getValueAt(baris,0).toString();
+
+        String status = "";
+
+        if(jRadioButton1.isSelected()){
+            status = "H";
+        }
+
+        if(jRadioButton2.isSelected()){
+            status = "TH";
+        }
+
+        SimpleDateFormat sdf =
+        new SimpleDateFormat("yyyy-MM-dd");
+
+        String tanggal =
+        sdf.format(jDateChooser1.getDate());
+
+        String sql =
+        "UPDATE pendaftaran_kelas SET id_member=?, id_kelas=?, tgl_daftar=?, status_kehadiran=? WHERE id_pendaftaran=?";
+
+        pst = conn.prepareStatement(sql);
+
+        pst.setString(1,jTextField1.getText());
+        pst.setString(2,jTextField2.getText());
+        pst.setString(3,tanggal);
+        pst.setString(4,status);
+        pst.setString(5,id);
+
+        pst.executeUpdate();
+
+        JOptionPane.showMessageDialog(null,
+        "Data berhasil diubah");
+
+        tampilData();
+        kosongkanForm();
+
+    } catch(Exception e){
+
+        JOptionPane.showMessageDialog(null,e);
+
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        try {
+            if(jTable4.getSelectedRow() == -1){
+
+    JOptionPane.showMessageDialog(this,
+    "Pilih data terlebih dahulu");
+
+    return;
+}
+
+        int baris =
+        jTable4.getSelectedRow();
+
+        String id =
+        jTable4.getValueAt(baris,0).toString();
+
+        String sql =
+        "DELETE FROM pendaftaran_kelas WHERE id_pendaftaran=?";
+
+        pst = conn.prepareStatement(sql);
+
+        pst.setString(1,id);
+
+        pst.executeUpdate();
+
+        JOptionPane.showMessageDialog(null,
+        "Data berhasil dihapus");
+
+        tampilData();
+        kosongkanForm();
+
+    } catch(Exception e){
+
+        JOptionPane.showMessageDialog(null,e);
+
+    }
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
