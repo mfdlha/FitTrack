@@ -603,12 +603,8 @@ public class FormPaket extends javax.swing.JFrame {
                 idPaket = tabel.getValueAt(baris, 0).toString();
 
             String masaAktifTabel = tabel.getValueAt(baris, 2).toString();
-                    if (masaAktifTabel.equals("Unlimited")) {
-                        fieldSpinMasaAktif.setValue(0);
-                    } else {
-                        String masaAktifAngka = masaAktifTabel.replace(" Hari", "").trim();
-                        fieldSpinMasaAktif.setValue(Integer.parseInt(masaAktifAngka));
-                    }
+            int angka = Integer.parseInt(masaAktifTabel.replace(" Hari", "").trim());
+            fieldSpinMasaAktif.setValue(angka);
 
                 String hargaTabel = tabel.getValueAt(baris, 3).toString();
                 String hargaBersih = hargaTabel.replaceAll("[^0-9]", ""); 
