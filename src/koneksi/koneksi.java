@@ -41,7 +41,7 @@ public class koneksi {
             }
 
             Connection conn = DriverManager.getConnection(url, user, pass);
-            System.out.println("Koneksi database AWS RDS berhasil!");
+//            System.out.println("Koneksi database AWS RDS berhasil!");
             return conn;
             
         } catch (Exception e) {
