@@ -211,6 +211,7 @@ public class FormKelas extends javax.swing.JFrame {
         tombolKembali.setBackground(new java.awt.Color(153, 153, 153));
         tombolKembali.setForeground(new java.awt.Color(255, 255, 255));
         tombolKembali.setText("Kembali");
+        tombolKembali.addActionListener(this::tombolKembaliActionPerformed);
 
         javax.swing.GroupLayout formInputDataKelasLayout = new javax.swing.GroupLayout(formInputDataKelas);
         formInputDataKelas.setLayout(formInputDataKelasLayout);
@@ -765,6 +766,12 @@ public class FormKelas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Gagal membuat laporan: " + e.getMessage());
         }
     }//GEN-LAST:event_tombolCetakLaporanActionPerformed
+
+    private void tombolKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tombolKembaliActionPerformed
+        // TODO add your handling code here:
+        new Dashboard_Utama().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_tombolKembaliActionPerformed
 
     /**
      * @param args the command line arguments

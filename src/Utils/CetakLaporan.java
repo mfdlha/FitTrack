@@ -12,13 +12,17 @@ import javax.swing.JTable;
  */
 public class CetakLaporan {
 public static void exportToHTML(JTable table, String namaFile) throws Exception {
+        exportToHTML(table, namaFile, "Laporan Transaksi FitTrack");
+    }
+
+public static void exportToHTML(JTable table, String namaFile, String judul) throws Exception {
         // Path khusus untuk report, misalnya di dalam folder "report" di root proyek
         File folder = new File("report");
         if (!folder.exists()) folder.mkdir(); // Buat folder jika belum ada
 
         FileWriter out = new FileWriter("report/" + namaFile + ".html");
         out.write("<html><body>");
-        out.write("<h1>Laporan Transaksi FitTrack</h1>");
+        out.write("<h1>" + judul + "</h1>");
         out.write("<table border='1' cellpadding='5' style='border-collapse:collapse; width:100%'>");
         
         // Header
@@ -32,7 +36,8 @@ public static void exportToHTML(JTable table, String namaFile) throws Exception 
         for (int i = 0; i < table.getRowCount(); i++) {
             out.write("<tr>");
             for (int j = 0; j < table.getColumnCount(); j++) {
-                out.write("<td>" + table.getValueAt(i, j).toString() + "</td>");
+                Object nilai = table.getValueAt(i, j);
+                out.write("<td>" + (nilai == null ? "" : nilai.toString()) + "</td>");
             }
             out.write("</tr>");
         }

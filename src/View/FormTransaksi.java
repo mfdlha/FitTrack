@@ -25,6 +25,8 @@ public class FormTransaksi extends javax.swing.JFrame {
     public FormTransaksi() {
         initComponents();
         tampilData();
+        setSize(800, 600);
+        setLocationRelativeTo(null);
         java.util.Date now = new java.util.Date();
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd");
         txtTanggal.setText(sdf.format(now));
@@ -190,6 +192,7 @@ public class FormTransaksi extends javax.swing.JFrame {
         jButton6.setBackground(new java.awt.Color(153, 153, 153));
         jButton6.setForeground(new java.awt.Color(255, 255, 255));
         jButton6.setText("Kembali");
+        jButton6.addActionListener(this::jButton6ActionPerformed);
 
         jLabel3.setText("Tanggal");
 
@@ -732,6 +735,12 @@ public class FormTransaksi extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Gagal membuat laporan: " + e.getMessage());
             }
     }//GEN-LAST:event_tombolCetakLaporanActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+        new Dashboard_Utama().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments

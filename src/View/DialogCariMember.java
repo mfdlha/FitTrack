@@ -24,6 +24,8 @@ public class DialogCariMember extends javax.swing.JDialog {
         initComponents();
         this.setLocationRelativeTo(null);
         tampilData("");
+        setSize(800, 600);
+        setLocationRelativeTo(null);
     }
     
     private void tampilData(String keyword) {
@@ -155,7 +157,7 @@ public class DialogCariMember extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tombolBatal)
                     .addComponent(tombolPilih))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(7, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(0, 0, 204));

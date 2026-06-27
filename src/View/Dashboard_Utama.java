@@ -1,10 +1,8 @@
 package View;
 
-import Dao.MemberDAO;
-import Model.Member;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.util.List;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import koneksi.koneksi;
@@ -27,6 +25,101 @@ public class Dashboard_Utama extends javax.swing.JFrame {
      */
     public Dashboard_Utama() {
         initComponents();
+        pasangNavigasiMenu();
+        muatDashboard();
+        setSize(800, 600);
+        setLocationRelativeTo(null);
+    }
+
+    private void pasangNavigasiMenu() {
+        jMenu3.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bukaFormTransaksi();
+            }
+        });
+
+        jMenu4.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bukaFormPaket();
+            }
+        });
+    }
+
+    private void bukaDataMember() {
+        new Data_Member().setVisible(true);
+        dispose();
+    }
+
+    private void bukaFormTransaksi() {
+        new FormTransaksi().setVisible(true);
+        dispose();
+    }
+
+    private void bukaFormPaket() {
+        new FormPaket().setVisible(true);
+        dispose();
+    }
+
+    private void muatDashboard() {
+        muatRingkasanDashboard();
+        tampilDataMember();
+    }
+
+    private void muatRingkasanDashboard() {
+        jLabel3.setText(formatRingkasan("Total Member", hitungData("SELECT COUNT(*) FROM member")));
+        jLabel6.setText(formatRingkasan("Member Aktif", hitungData("SELECT COUNT(*) FROM member WHERE UPPER(status) = 'AKTIF'")));
+        jLabel2.setText(formatRingkasan("Total Kelas", hitungData("SELECT COUNT(*) FROM kelas")));
+        jLabel8.setText(formatRingkasan("Total Transaksi", hitungData("SELECT COUNT(*) FROM transaksi")));
+    }
+
+    private String formatRingkasan(String judul, int jumlah) {
+        return "<html><div style='text-align:center;'>"
+                + "<span style='font-size:20px; font-weight:bold;'>" + jumlah + "</span><br>"
+                + judul
+                + "</div></html>";
+    }
+
+    private int hitungData(String sql) {
+        try (Connection conn = koneksi.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+            System.err.println("Gagal menghitung data dashboard: " + e.getMessage());
+        }
+        return 0;
+    }
+
+    private void tampilDataMember() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID Member");
+        model.addColumn("Nama");
+        model.addColumn("Alamat");
+        model.addColumn("No HP");
+        model.addColumn("Status");
+
+        String sql = "SELECT id_member, nama, alamat, no_hp, status FROM member ORDER BY id_member DESC";
+        try (Connection conn = koneksi.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                model.addRow(new Object[]{
+                    rs.getInt("id_member"),
+                    rs.getString("nama"),
+                    rs.getString("alamat"),
+                    rs.getString("no_hp"),
+                    rs.getString("status")
+                });
+            }
+
+            jTable1.setModel(model);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Gagal memuat data member: " + e.getMessage());
+        }
     }
 
     /**
@@ -62,7 +155,6 @@ public class Dashboard_Utama extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -240,11 +332,13 @@ public class Dashboard_Utama extends javax.swing.JFrame {
 
         jMenu1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 255, 255), 3));
         jMenu1.setText("Dasboard");
+        jMenu1.addActionListener(this::jMenu1ActionPerformed);
         jMenuBar1.add(jMenu1);
 
         jMenu2.setText("Manage Member");
 
         jMenuItem1.setText("Lihat Member");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
         jMenu2.add(jMenuItem1);
 
         jMenuBar1.add(jMenu2);
@@ -255,15 +349,14 @@ public class Dashboard_Utama extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Atur Harga");
+        jMenu4.addActionListener(this::jMenu4ActionPerformed);
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Manage Kelas");
 
-        jMenuItem2.setText("Pendaftaran Kelas");
+        jMenuItem2.setText("Lihat Kelas");
+        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
         jMenu5.add(jMenuItem2);
-
-        jMenuItem3.setText("Lihat Kelas");
-        jMenu5.add(jMenuItem3);
 
         jMenuBar1.add(jMenu5);
 
@@ -320,9 +413,30 @@ public class Dashboard_Utama extends javax.swing.JFrame {
 
     private void jMenu3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu3ActionPerformed
         // TODO add your handling code here:
-        new Transaksi().setVisible(true);
-        dispose();
+        bukaFormTransaksi();
     }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        bukaDataMember();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenu4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu4ActionPerformed
+        // TODO add your handling code here:
+        bukaFormPaket();
+    }//GEN-LAST:event_jMenu4ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        new FormKelas().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
+        // TODO add your handling code here:
+        new Dashboard_Utama().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenu1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -357,7 +471,6 @@ public class Dashboard_Utama extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel5;
