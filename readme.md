@@ -87,13 +87,13 @@ F6
 
 ## 🖼️ Tampilan Aplikasi
 
-Coming Soon...
+Ada di Video Dokumentasi Progress yang seharusnya berbentuk link file, tapi lupa buat diupdate, jadi pakai template bawaan dari bapak dosen kita :)
 
 ---
 
 ## 📖 Dokumentasi Progress
 
-Coming Soon....
+[Link Video YouTube] (https://youtu.be/oM2_tZXf1h8?si=6A3sQi-MxxlQuKqG)
 
 ---
 
