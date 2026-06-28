@@ -25,7 +25,6 @@ public class DialogCariMember extends javax.swing.JDialog {
         this.setLocationRelativeTo(null);
         tampilData("");
         setSize(800, 600);
-        setLocationRelativeTo(null);
     }
     
     private void tampilData(String keyword) {
